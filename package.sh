@@ -17,7 +17,7 @@ newVersion=$(cat << EOF
   "desc": "新增功能",
   "sha256": "$hash",
   "url": "https://github.com/lxlhlp/bob-plugin-chatglm-translate/releases/download/v$version/bob-plugin-chatglm-translate-v$version.bobplugin",
-  "minBobVersion": "1.8.0",
+  "minBobVersion": "0.10.0",
  "timestamp": $timestamp
 }
 EOF
