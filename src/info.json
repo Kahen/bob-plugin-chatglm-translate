@@ -1,6 +1,6 @@
 {
   "identifier": "chatglm.plugins.translate",
-  "version": "1.2.2",
+  "version": "1.0.0",
   "category": "translate",
   "name": "智普翻译",
   "summary": "智普清言翻译插件",
@@ -8,7 +8,7 @@
   "author": "玄晓生",
   "homepage": "https://github.com/lxlhlp/bob-plugin-chatglm-translate",
   "appcast": "https://raw.githubusercontent.com/lxlhlp/bob-plugin-chatglm-translate/refs/heads/main/appcast.json",
-  "minBobVersion": "1.8.0",
+  "minBobVersion": "0.10.0",
   "options": [
     {
       "identifier": "APIkey",

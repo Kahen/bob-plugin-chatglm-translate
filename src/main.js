@@ -47,45 +47,40 @@ function supportLanguages() {
 }
 
 function translate(query, completion) {
-  resTxt = "";
-  $http.streamRequest({
+  $http.request({
     method: "POST",
-    url: "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+    url: "https://open.bigmodel.cn/api/paas/v4/agents/invoke",
     header: {
       Authorization: $option.APIkey,
       "Content-Type": "application/json",
     },
-    body: initReqBody(query),
-    streamHandler: function (stream) {
-      var txt = stream.text;
-
-      var lines = txt.split("\n");
-
-      lines.forEach(function (text) {
-        text = text.slice(6);
-        // $log.info(text);
-
-        if (text == "[DONE]") {
-          query.onCompletion({
-            result: {
-              toParagraphs: [resTxt],
-            },
-          });
-          return;
-        } else if (text.startsWith("{")) {
-          var obj = JSON.parse(text);
-
-          resTxt = resTxt + obj.choices[0].delta.content;
-          translateResult = {
-            toParagraphs: [resTxt],
-          };
-          query.onStream({ result: translateResult });
-        }
-      });
+    body: {
+      agent_id: "general_translation",
+      messages: [{
+        role: "user",
+        content: [{
+          type: "text",
+          text: query.text
+        }]
+      }],
+      custom_variables: {
+        source_lang: query.from,
+        target_lang: query.to
+      }
     },
     handler: function (resp) {
-      var data = resp.data;
-    },
+      if (resp.error) {
+        completion({ error: resp.error });
+        return;
+      }
+      
+      var translatedText = resp.data.choices[0].messages[0].content.text;
+      query.onCompletion({
+        result: {
+          toParagraphs: [translatedText]
+        }
+      });
+    }
   });
 }
 
