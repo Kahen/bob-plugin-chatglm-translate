@@ -49,33 +49,21 @@ function supportLanguages() {
 function translate(query, completion) {
   $http.request({
     method: "POST",
-    url: "https://open.bigmodel.cn/api/paas/v4/agents/invoke",
+    url: "https://open.bigmodel.cn/api/paas/v4/chat/completions",
     header: {
       Authorization: $option.APIkey,
       "Content-Type": "application/json",
     },
-    body: {
-      agent_id: "general_translation",
-      messages: [{
-        role: "user",
-        content: [{
-          type: "text",
-          text: query.text
-        }]
-      }],
-      custom_variables: {
-        source_lang: query.from,
-        target_lang: query.to
-      }
-    },
+    body: initReqBody(query),
     handler: function (resp) {
       if (resp.error) {
         completion({ error: resp.error });
         return;
       }
       
-      var translatedText = resp.data.choices[0].messages[0].content.text;
-      query.onCompletion({
+      var translatedText = resp.data.choices[0].message.content;
+
+      completion({
         result: {
           toParagraphs: [translatedText]
         }
@@ -119,7 +107,7 @@ function initReqBody(query) {
 
   return {
     model: $option.model,
-    stream: true,
+    stream: false,
     messages: [
       {
         role: "system",
