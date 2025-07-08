@@ -1,6 +1,6 @@
 version=$(jq -r .version ./src/info.json)
 
-zip -0 -j  -r ./bob-plugin-chatglm-translate-v$version.bobplugin ./src/*
+zip -0 -j  -r ./bob-plugin-glm-tans-agent-v$version.bobplugin ./src/*
 
 
 version=$(jq -r .version ./src/info.json)

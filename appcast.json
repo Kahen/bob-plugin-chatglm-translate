@@ -2,52 +2,44 @@
   "identifier": "chatglm.plugins.translate",
   "versions": [
     {
-      "version": "v1.2.2",
-      "desc": "支持检查更新及主页跳转",
-      "sha256": "eb0ec5ed9c5f6e8fb65b7b942cb50edb823d960901387ee4296a9a68895dc4aa",
-      "url": "https://github.com/lxlhlp/bob-plugin-chatglm-translate/releases/download/v1.2.2/bob-plugin-chatglm-translate-v1.2.2.bobplugin",
-      "minBobVersion": "1.8.0",
-      "timestamp": 1730857839000
+      "version": "v0.0.1",
+      "desc": "新增功能",
+      "sha256": "",
+      "url": "https://github.com/lxlhlp/bob-plugin-chatglm-translate/releases/download/v0.0.1/bob-plugin-chatglm-translate-v0.0.1.bobplugin",
+      "minBobVersion": "0.10.0",
+      "timestamp": 1751964408000
     },
     {
-      "version": "v1.2.1",
-      "desc": "更新最新模型选择",
-      "sha256": "650e1817cf3509cd9fd403269c9431bad059f61d57e3618ab80bf65d0963a8b3",
-      "url": "https://github.com/lxlhlp/bob-plugin-chatglm-translate/releases/download/v1.2.1/bob-plugin-chatglm-translate-v1.2.1.bobplugin",
-      "minBobVersion": "1.8.0",
-      "timestamp": 1730095793000
+      "version": "v0.0.1",
+      "desc": "新增功能",
+      "sha256": "",
+      "url": "https://github.com/lxlhlp/bob-plugin-chatglm-translate/releases/download/v0.0.1/bob-plugin-chatglm-translate-v0.0.1.bobplugin",
+      "minBobVersion": "0.10.0",
+      "timestamp": 1751964343000
     },
     {
-      "version": "v1.2.0",
-      "desc": "新增联网搜索功能",
-      "sha256": "cafbb51cd5a430ff8482526f7fddbe8746fec2298741e56a6c52db583d7cafaf",
-      "url": "https://github.com/lxlhlp/bob-plugin-chatglm-translate/releases/download/v1.2.0/bob-plugin-chatglm-translate-v1.2.0.bobplugin",
-      "minBobVersion": "1.8.0",
-      "timestamp": 1729561244000
+      "version": "v0.0.1",
+      "desc": "新增功能",
+      "sha256": "",
+      "url": "https://github.com/lxlhlp/bob-plugin-chatglm-translate/releases/download/v0.0.1/bob-plugin-chatglm-translate-v0.0.1.bobplugin",
+      "minBobVersion": "0.10.0",
+      "timestamp": 1751964224000
     },
     {
-      "version": "v1.1.1",
-      "desc": "修复一些小问题",
-      "sha256": "25b92bf97d787034b210d3d1e0e46ea7e91792b01c2b06d5197f0de717933432",
-      "url": "https://github.com/lxlhlp/bob-plugin-chatglm-translate/releases/download/v1.1.1/bob-plugin-chatglm-translate-v1.1.1.bobplugin",
-      "minBobVersion": "1.8.0",
-      "timestamp": 1729476070000
+      "version": "v0.0.1",
+      "desc": "新增功能",
+      "sha256": "6ee1b4fe7eb517fa2df2ebbce9e77c045059fe8ced90a5ea97cdbc0e6f71ba56",
+      "url": "https://github.com/lxlhlp/bob-plugin-chatglm-translate/releases/download/v0.0.1/bob-plugin-chatglm-translate-v0.0.1.bobplugin",
+      "minBobVersion": "0.10.0",
+      "timestamp": 1751964110000
     },
     {
-      "version": "v1.1.0",
-      "desc": "新增自定义提示词功能",
-      "sha256": "3e4dbde38f87316009d3cbf650a4ab2b5fe5c0e23aeca16ed2341834cce1b61c",
-      "url": "https://github.com/lxlhlp/bob-plugin-chatglm-translate/releases/download/v1.1.0/bob-plugin-chatglm-translate-v1.1.0.bobplugin",
-      "minBobVersion": "1.8.0",
-      "timestamp": 1729135870000
-    },
-    {
-      "version": "v1.0.0",
-      "desc": "首发版本",
-      "sha256": "fc2a3da9b54cb8b35b95adbdd686a9f4835c3f0c86c0ff37ec441d30d2dc9db2",
-      "url": "https://github.com/lxlhlp/bob-plugin-chatglm-translate/releases/download/v1.0.0/bob-plugin-chatglm-translate.bobplugin",
-      "minBobVersion": "1.8.0",
-      "timestamp": 1728889515000
+      "version": "v0.0.1_agent",
+      "desc": "新增功能",
+      "sha256": "b815bc1b757ef2d540505cf4393c21c2c5f87d56bb9786e19da9557168b89587",
+      "url": "https://github.com/lxlhlp/bob-plugin-chatglm-translate/releases/download/v0.0.1_agent/bob-plugin-chatglm-translate-v0.0.1_agent.bobplugin",
+      "minBobVersion": "0.10.0",
+      "timestamp": 1751964086000
     }
   ]
 }

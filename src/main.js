@@ -47,22 +47,48 @@ function supportLanguages() {
 }
 
 function translate(query, completion) {
+  $log.info('开始翻译流程');
+  $log.info('查询文本: ' + query.text);
+  $log.info('源语言: ' + query.from);
+  $log.info('目标语言: ' + query.to);
+
   $http.request({
     method: "POST",
-    url: "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+    url: "https://open.bigmodel.cn/api/v1/agents",
     header: {
       Authorization: $option.APIkey,
       "Content-Type": "application/json",
     },
-    body: initReqBody(query),
+    body: {
+      agent_id: "general_translation",
+      messages: [{
+        role: "user",
+        content: [{
+          type: "text",
+          text: query.text
+        }]
+      }],
+      custom_variables: {
+        source_lang: langMap[query.detectFrom],
+        target_lang: langMap[query.detectTo]
+      }
+    },
     handler: function (resp) {
+      $log.info('收到响应');
+      $log.error('翻译调试:'+ JSON.stringify($http.request.url));
+      $log.error('翻译调试:'+ JSON.stringify($http.request.body));
+      $log.error('翻译调试:'+ JSON.stringify($http.request.headers));
       if (resp.error) {
+        $log.error('翻译出错:'+ JSON.stringify(resp));
+        $log.info('翻译出错: ' + JSON.stringify(resp.error));
         completion({ error: resp.error });
         return;
       }
-      
-      var translatedText = resp.data.choices[0].message.content;
 
+      $log.info('响应数据: ' + JSON.stringify(resp.data));
+      var translatedText = resp.data.choices[0].messages[0].content.text;
+      $log.info('翻译结果: ' + translatedText);
+      
       completion({
         result: {
           toParagraphs: [translatedText]
@@ -70,61 +96,4 @@ function translate(query, completion) {
       });
     }
   });
-}
-
-function initReqBody(query) {
-  var prompt = $option.prompt;
-  var web_search = $option.web_search;
-  var content = query["text"];
-  if (prompt == "") {
-    prompt =
-      "你是一个翻译专家 : 专注于" +
-      langMap[query.detectFrom] +
-      "到" +
-      langMap[query.detectTo] +
-      "的翻译，请确保翻译结果的准确性和专业性，同时，请确保翻译结果的翻译质量，不要出现翻译错误，翻译时能够完美确保翻译结果的准确性和专业性，同时符合" +
-      langMap[query.detectTo] +
-      "的表达和语法习惯。" +
-      "你拥有如下能力:" +
-      langMap[query.detectFrom] +
-      "到" +
-      langMap[query.detectTo] +
-      "的专业翻译能力，理解并保持原意，熟悉" +
-      langMap[query.detectTo] +
-      "表达习惯。" +
-      "翻译时,请按照如下步骤: " +
-      "1. 仔细阅读并理原文内容" +
-      "2. 务必确保准确性和专业性" +
-      "3. 校对翻译文本，确保符合" +
-      langMap[query.detectTo] +
-      "表达习惯,并加以语法润色。" +
-      "4. 请只输出最终翻译文本。";
-  } else {
-    prompt = prompt
-      .replace("原文语言", langMap[query.detectFrom])
-      .replace("目标语言", langMap[query.detectTo]);
-  }
-
-  return {
-    model: $option.model,
-    stream: false,
-    messages: [
-      {
-        role: "system",
-        content: prompt,
-      },
-      {
-        role: "user",
-        content: content,
-      },
-    ],
-    tools: [
-      {
-        type: "web_search",
-        web_search: {
-          enable: web_search,
-        },
-      },
-    ],
-  };
 }

@@ -1,9 +1,9 @@
 {
-  "identifier": "chatglm.plugins.translate",
-  "version": "1.0.0",
+  "identifier": "glm-tans-agent.plugins.translate",
+  "version": "0.0.1",
   "category": "translate",
-  "name": "智普翻译",
-  "summary": "智普清言翻译插件",
+  "name": "智谱翻译-Agent",
+  "summary": "智谱清言翻译插件",
   "icon": "",
   "author": "玄晓生",
   "homepage": "https://github.com/lxlhlp/bob-plugin-chatglm-translate",
